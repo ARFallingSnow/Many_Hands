@@ -1,7 +1,7 @@
 /*
 Name: InputHandler
 Author: Alex, R
-Purpose: allows extened functionality to interface
+Purpose: allows extended functionality to interface
 Details: sets debounce 
 */
 

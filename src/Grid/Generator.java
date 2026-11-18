@@ -214,6 +214,7 @@ public class Generator {
                 if(grid.getSpot(b,a) == 3){grid.setSpot(b,a, 30);}
                 if(grid.getSpot(b,a) == 4){grid.setSpot(b,a, 40);}
                 if(grid.getSpot(b,a) == 5){grid.setSpot(b,a, 50);}
+                if(grid.getSpot(b,a) == 0){grid.setSpot(b,a, 10);}
             }
         }
     }

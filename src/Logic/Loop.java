@@ -22,7 +22,7 @@ public class Loop implements Runnable{
         this.core = core; 
     }
     
-    public void startGameThread() {   //initilizes the game thread 
+    public void startGameThread() {   //initializes the game thread 
 
         gameThread = new Thread(this); // instantiation 
         gameThread.start(); //start

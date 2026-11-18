@@ -1,3 +1,10 @@
+/*
+Name: Manager
+Author: Alex, R
+Purpose: Abstract class used to provide basic structure for manager objects 
+Details:
+*/
+
 package Logic;
 
 public abstract class Manager {

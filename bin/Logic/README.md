@@ -5,16 +5,17 @@
 
 ## Classes:
 <UL>
-    - Core:
-    - Launcher:
-    - Manager:
-    - Loop:
-    - Manager: 
+    - Core: Primary object for coordinating and controlling all child manager objects. Provides time dissemination to objects that need it 
+    - Launcher: Initial program in the kill chain. Starts the core object or other main objects based on gameMode set 
+    - Manager: Abstract Class to pattern all manager objects 
+    - Loop: Thread running object used to provide gameTick timing for other objects. Updates core directly with each cycle
+
 </UL>
 
 ## Process Overview: 
 
-## Requirements: 
+ #### Timing: 
 
-<UL>
-</UL>
+ #### Display Output: 
+
+ #### User Input: 

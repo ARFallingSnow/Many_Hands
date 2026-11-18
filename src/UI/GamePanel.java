@@ -12,14 +12,18 @@ package UI;
 
 import javax.swing.*; //package containing user interface objects
 import java.awt.*; //package containing graphics methods and objects
-import Grid.Grid; //main data structure used to pass information reguarding the game map
+import java.awt.image.BufferedImage;
+
+import Grid.Grid; //main data structure used to pass information regarding the game map
 import Logic.Core; //Core object gives the requested data 
 import Tiles.*; //package containing tile information 
 
 
 
+
 public class GamePanel extends JPanel{
     Core core;
+    private TileManager tileManager; 
 
     private static final int TILE_SIZE = 24; //sets the pixel size for each tile 
 
@@ -28,6 +32,7 @@ public class GamePanel extends JPanel{
         setBackground(new  Color(71,184,188)); //fill empty space with the background color
         this.core = core;
         System.out.println("GamePanel initialized");
+        tileManager = new TileManager(); 
         
     }
 
@@ -51,53 +56,66 @@ public class GamePanel extends JPanel{
      */
     private void drawMap(Graphics2D g2){
         Grid grid = core.getGrid(); //retrieve up-to-date grid from core 
+        BufferedImage image; 
         for(int y = 0; y < core.getRows(); y++){
             for(int x = 0; x < core.getCols(); x++){
                 int tile = grid.getSpot(x,y);
 
                 switch(tile){
                     case TileTypes.WALL:
-                        g2.setColor(Color.GRAY);
+                        image = tileManager.getWall().getImage();
                         break;
                     case TileTypes.PLAYER: 
-                        g2.setColor(Color.YELLOW);
+                        image = tileManager.getGuy().getImage();
                         break;
                     case TileTypes.FLOOR: 
-                        g2.setColor(Color.GREEN);
+                        image = tileManager.getFloor().getImage();
                         break;
                     case TileTypes.DOOR: 
-                        g2.setColor(Color.ORANGE);
+                        image = tileManager.getDoor().getImage();
                         break;
-                    case TileTypes.HIDDEN_THING:
-                        g2.setColor(Color.GRAY);
-                        break;
+                    case TileTypes.HIDDEN_BOX:
+                    case TileTypes.HIDDEN_WALL:
                     case TileTypes.HIDDEN_DOOR:
-                        g2.setColor(Color.GRAY);
-                        break;
                     case TileTypes.HIDDEN_FLOOR:
-                        g2.setColor(Color.GRAY);
+                        image = tileManager.getHidden().getImage();
+                        break;
+                    case TileTypes.BOX:
+                        image = tileManager.getBox().getImage();
                         break;
                     default:
-                        g2.setColor(Color.RED);
+                        image = tileManager.getHidden().getImage();
                         break;
                 }
-
-                g2.fillRect(
+                g2.drawImage(
+                    image,
                     x * TILE_SIZE,
                     y * TILE_SIZE,
                     TILE_SIZE,
-                    TILE_SIZE
-                );
-                
+                    TILE_SIZE,
+                    null);
+
                 g2.setColor(Color.BLACK);
 
                 g2.drawRect(
                     x * TILE_SIZE,
                     y * TILE_SIZE,
                     TILE_SIZE,
-                    TILE_SIZE
-                );
+                    TILE_SIZE);
             }
         }
     }
+
+    private void drawFloor(Graphics2D g2){
+        Grid grid = core.getGrid(); //retrieve up-to-date grid from core 
+        for(int y = 0; y < core.getRows(); y++){
+            for(int x = 0; x < core.getCols(); x++){
+                    g2.drawImage(tileManager.getFloor().getImage(),
+    x * TILE_SIZE,
+    y * TILE_SIZE,
+    TILE_SIZE,
+    TILE_SIZE,
+    null);}}
+}
+
 }

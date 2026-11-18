@@ -14,14 +14,17 @@ public class TileTypes {
 
     public static final int FLOOR = 3;
 
-    public static final int THING = 4;
+    public static final int BOX = 4;
 
     public static final int DOOR = 5;
 
+    public static final int HIDDEN_WALL = 10; 
+    
     public static final int HIDDEN_FLOOR = 30;
 
-    public static final int HIDDEN_THING = 40;
+    public static final int HIDDEN_BOX = 40;
 
     public static final int HIDDEN_DOOR = 50;
+    
 
 }

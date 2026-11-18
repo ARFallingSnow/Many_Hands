@@ -28,46 +28,6 @@ public class GridHandler {
     }
     public void passKey(String key){}
     public void passCommand(){}
-
-    public void displayGrid(){
-        StringBuilder sb = new StringBuilder();
-        for(int y = 0; y < rows; y++){
-            for (int x = 0; x < cols; x++){
-                switch(grid.getSpot(x,y)){
-                    case 0:
-                        sb.append("▓▓");
-                        break;
-                    case 1:
-                        sb.append("░@");
-                        break;
-                    case 3:
-                        sb.append("  ");
-                        break;
-                    case 4:
-                        sb.append("ÛÛ");
-                        break;
-                    case 5:
-                        sb.append("DD");
-                        break;
-                    case 30:
-                        sb.append("▓▓");
-                        break;
-                    case 40:
-                        sb.append("▓▓");
-                        break;
-                    case 50:
-                        sb.append("▓▓");
-                        break;
-                    default:
-                        sb.append(" "+String.valueOf(grid.getSpot(x,y)));
-                        break;
-                }
-                
-            }
-            sb.append("\n");
-        }
-        //im.updatePane(sb.toString());
-    }
     public void setPlayer(){
         boolean flag = false;
         for (int a = 1; a < rows-2; a++){
@@ -104,6 +64,7 @@ public class GridHandler {
                 if(grid.getSpot(b,a) == 30){grid.setSpot(b,a, 3);}
                 if(grid.getSpot(b,a) == 40){grid.setSpot(b,a, 4);}
                 if(grid.getSpot(b,a) == 50){grid.setSpot(b,a, 5);}
+                if(grid.getSpot(b,a) == 10){grid.setSpot(b,a, 0);}
             }
         }
     }

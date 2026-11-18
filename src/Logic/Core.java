@@ -123,7 +123,12 @@ public class Core {
                 if(grid.inBounds(x+b, y+a)){
                     int test = grid.getSpot(x+b, y+a);
                     if (test > 9){
-                        grid.setSpot(x+b, y+a, test/10);
+                        if(test == 10){
+                            grid.setSpot(x+b, y+a, 0);
+                        }else {
+                            grid.setSpot(x+b, y+a, test/10);
+                        }
+                        
                     }
                     
                 }
